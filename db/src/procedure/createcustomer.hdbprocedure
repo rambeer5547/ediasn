@@ -1,0 +1,34 @@
+PROCEDURE "ediasn.db.procedure::createcustomer" ( 
+	    IN im_custnumn NVARCHAR(10),
+            im_name NVARCHAR(30),
+            im_steert NVARCHAR(50),
+            im_city  NVARCHAR (20),
+            im_postal NVARCHAR(10),
+            im_region  NVARCHAR(2),
+            im_country NVARCHAR(2),
+            im_custref1 NVARCHAR(10),
+            im_custref2 NVARCHAR(10),
+        OUT ex_error NVARCHAR(100)
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER AS
+   --DEFAULT SCHEMA <default_schema_name>
+   --READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   declare noc integer;
+   
+   select count(*) into noc  from "ediasn.db::ediasndetails.edicustomer"  where "custnumn" = im_custnumn;
+
+    if :noc > 0 then
+        ex_error := 'ERROR: Customer' || :im_custnumn || ' Allready exists!';
+    else
+        insert into "ediasn.db::ediasndetails.edicustomer"
+        values (im_custnumn,im_name,im_steert,im_city,im_postal,im_region,im_country,im_custref1,im_custref2);
+    end if;
+   
+   
+   
+END

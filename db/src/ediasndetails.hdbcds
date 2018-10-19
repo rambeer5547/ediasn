@@ -21,7 +21,7 @@ context ediasndetails {
             reciverid   : String(15);
             verison     : String(6);
             inticnnum   : String(9);
-            idicator    : Sting(1);
+            idicator    : String(1);
             envref1     : String(10);
     };
 
@@ -49,8 +49,8 @@ context ediasndetails {
             dockcode     : String(10);
             delnetwt     : Decimal(10, 2);
             delgrwt      : Decimal(10, 2);
-            delref1      : string(10);
-            delref2      : string(10);
+            delref1      : String(10);
+            delref2      : String(10);
     };
 
     entity item {
