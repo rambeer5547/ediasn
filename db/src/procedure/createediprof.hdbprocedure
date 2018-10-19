@@ -1,5 +1,6 @@
 PROCEDURE "ediasn.db.procedure::createediprof" (
 	    IN  im_profilename  NVARCHAR(20),
+	        im_edicustnum   NVARCHAR(10),
             im_senderqlf    NVARCHAR(2),
             im_senderid     NVARCHAR(15),
             im_reciverqlf   NVARCHAR(2),
@@ -27,7 +28,7 @@ BEGIN
         ex_error := 'ERROR: EDI Customer EVP profile' || :im_profilename || ' Allready exists!';
     else
         insert into "ediasn.db::ediasndetails.envprofile"
-        values (im_profilename,im_senderqlf,im_senderid,im_reciverqlf,im_reciverid,im_verison,im_inticnnum,im_idicator,im_envref1);
+        values (im_profilename,im_edicustnum,im_senderqlf,im_senderid,im_reciverqlf,im_reciverid,im_verison,im_inticnnum,im_idicator,im_envref1);
     end if;
    
    

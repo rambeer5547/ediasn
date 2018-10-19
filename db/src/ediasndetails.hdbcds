@@ -15,6 +15,7 @@ context ediasndetails {
 
     entity envprofile {
         key profilename : String(20) not null;
+            edicustnum  : String(10);
             senderqlf   : String(2);
             senderid    : String(15);
             reciverqlf  : String(2);
