@@ -1,0 +1,74 @@
+namespace ediasn.db;
+
+context ediasndetails {
+    entity edicustomer {
+        key custnumn : String(10) not null;
+            name     : String(30);
+            steert   : String(50);
+            city     : String(20);
+            postal   : String(10);
+            region   : String(2);
+            country  : String(2);
+            custref1 : String(10);
+            custref2 : String(10);
+    };
+
+    entity envprofile {
+        key profilename : String(20) not null;
+            senderqlf   : String(2);
+            senderid    : String(15);
+            reciverqlf  : String(2);
+            reciverid   : String(15);
+            verison     : String(6);
+            inticnnum   : String(9);
+            idicator    : Sting(1);
+            envref1     : String(10);
+    };
+
+    entity shipmemt {
+        key shipmentid    : String(10) not null;
+            deliverynum   : String(10);
+            shipdate      : LocalDate;
+            timezone      : String(03);
+            shipmenttype  : String(2);
+            Traillernum   : String(10);
+            Equipmenttype : String(2);
+            Equipmentnum  : String(10);
+            shipref1      : String(10);
+            Shipref2      : String(10);
+    };
+
+    entity delivery {
+        key deliveryid   : String(10) not null;
+            shiptocode   : String(10);
+            suppliercode : String(10);
+            shipfromcode : String(10);
+            soldtocode   : String(10);
+            totaboxcount : Integer;
+            totalpallet  : Integer;
+            dockcode     : String(10);
+            delnetwt     : Decimal(10, 2);
+            delgrwt      : Decimal(10, 2);
+            delref1      : string(10);
+            delref2      : string(10);
+    };
+
+    entity item {
+        key lineitmenum       : String(10) not null;
+            material          : String(10);
+            custmaterial      : String(10);
+            shippedqty        : Integer;
+            cumshippedqty     : Integer;
+            uom               : String(2);
+            itmponum          : String(10);
+            custpolineitemnum : Integer;
+            eclevel           : String(10);
+            itmref1           : String(10);
+            Itemref2          : String(10);
+    }
+
+
+
+
+
+};
