@@ -1,1 +1,1 @@
-# ediasn
+This is documentation for EDI ASN project.
