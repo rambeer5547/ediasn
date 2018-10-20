@@ -1,9 +1,0 @@
-service{
-"ediasn.db::ediasndetails.edicustomer" as "editp";
-"ediasn.db::ediasndetails.envprofile" as "edienvelope"
-association "edicust_envprof"  with referential constraint principal
-"editp"("custnumn") multiplicity "1" dependent "edienvelope"("edicustnum") multiplicity
-"*";  
-
-
-}

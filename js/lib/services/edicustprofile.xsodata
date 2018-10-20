@@ -1,0 +1,18 @@
+service{
+
+//create forbidden
+//update forbidden
+//delete forbidden;
+// association 
+//"ediasn.db::ediasndetails.edicustomer" as "editp" ;
+//"ediasn.db::ediasndetails.envprofile" as "edienvelope";
+//association "edicust_envprof"  with referential constraint  principal
+//"editp"("custnumn") multiplicity "1" dependent "edienvelope"("edicustnum") multiplicity "*";  
+
+//navidation 
+"ediasn.db::ediasndetails.edicustomer" as "editp" navigates ("customer_profile" as "hisediprofile") ;
+"ediasn.db::ediasndetails.envprofile" as "edienvelope";
+association "customer_profile" principal "editp" ("custnumn") multiplicity "1" dependent "edienvelope"("edicustnum") multiplicity "*";  
+
+}
+ 
