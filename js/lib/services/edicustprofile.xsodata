@@ -9,10 +9,9 @@ service{
 //association "edicust_envprof"  with referential constraint  principal
 //"editp"("custnumn") multiplicity "1" dependent "edienvelope"("edicustnum") multiplicity "*";  
 
-//navidation 
+//navigation 
 "ediasn.db::ediasndetails.edicustomer" as "editp" navigates ("customer_profile" as "hisediprofile") ;
-"ediasn.db::ediasndetails.envprofile" as "edienvelope";
-association "customer_profile" principal "editp" ("custnumn") multiplicity "1" dependent "edienvelope"("edicustnum") multiplicity "*";  
+ association "customer_profile" principal "editp" ("custnumn") multiplicity "1" dependent "shp"("customerid") multiplicity "*";  
 
 }
  

@@ -1,0 +1,10 @@
+service
+{
+"ediasn.db::ediasndetails.customer" as "cust" navigates ("cust_shp" as "hisshipments","shp_del" as "itsdeliveries","del_itm" as "itsitems");
+"ediasn.db::ediasndetails.shipment" as "shp" ;
+"ediasn.db::ediasndetails.delivery" as "del" ;
+"ediasn.db::ediasndetails.item" as "itm"; 
+association "cust_shp"  principal "cust" ("custnumn") multiplicity "1" dependent "shp"("shipmentnum") multiplicity "*"; 
+association "shp_del"  principal "shp" ("shipmentnum") multiplicity "1" dependent "del"("shipmentid") multiplicity "*"; 
+association "del_itm"  principal "del" ("deliverynum") multiplicity "1" dependent "itm"("deliveryid") multiplicity "*"; 
+}
