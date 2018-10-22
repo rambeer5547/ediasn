@@ -1,39 +1,41 @@
 PROCEDURE "ediasn.db.procedure::createasn" (
 	 IN im_custnumn NVARCHAR(10),
 	    im_shipmentnum NVARCHAR(10),
-	    im_deliverynum NVARCHAR(10),
+	    im_deliverynum NVARCHAR(10), 
+	    im_lineitmnum  NVARCHAR(10),
+	  OUT ex_error NVARCHAR(100)
 	    
 )
-   LANGUAGE SQLSCRIPT
-   SQL SECURITY INVOKER AS
-   --DEFAULT SCHEMA <default_schema_name>
-   --READS SQL DATA AS
+  LANGUAGE SQLSCRIPT
+  SQL SECURITY INVOKER AS
+  --DEFAULT SCHEMA <default_schema_name>
+  --READS SQL DATA AS
 BEGIN
-   /*************************************
-       Write your procedure logic 
-   *************************************/
-   declare noc integer; 
-   select count(*) into noc from "ediasn.db::ediasndetails.edicustomer" where "custnumn" = im_custnumn;
-   if :noc=0 then
-    ex_error := 'ERROR: Customer' || :im_custnumn || ' Does not exists!';
-   else
-    select count(*) into noc from "ediasn.db::ediasndetails.shipmemt" where "shipmentnum" = im_shipmentnum;
-    if :noc >0 then
-    ex_error := 'ERROR: Shipment' || :im_shipmentnum || ' Already  exists!';
-    else
-    select count(*) into noc from "ediasn.db::ediasndetails.delivery" where "deliverynum" = im_deliverynum;
-    if :noc >0 then
-    ex_error := 'ERROR: Delivery' || :im_deliverynum || ' Already  exists!';
-    else
-    select count(*) into noc from "ediasn.db::ediasndetails.item" where "lineitmnum" = im_lineitmnum;
-    if :noc >0 then
-    ex_error := 'ERROR: Item' || :im_lineitmnum || ' Already  exists!';
-    else 
-     insert into "ediasn.db::ediasndetails.shipmemt"  values (im_shipmentnum);
-     insert into "ediasn.db::ediasndetails.delivery"  values (im_deliverynum); 
-     insert into "ediasn.db::ediasndetails.item"      values (im_lineitmnum); 
-   end if;
-   end if;
-   end if;
-   end if;
+  /*************************************
+      Write your procedure logic 
+  *************************************/
+  --declare noc integer; 
+  --select count(*) into noc from "ediasn.db::ediasndetails.edicustomer" where "custnumn" = im_custnumn;
+  --if :noc=0 then
+  --  ex_error := 'ERROR: Customer' || :im_custnumn || ' Does not exists!';
+  --else
+  --  select count(*) into noc from "ediasn.db::ediasndetails.shipmemt" where "shipmentnum" = im_shipmentnum;
+  --  if :noc >0 then
+  --  ex_error := 'ERROR: Shipment' || :im_shipmentnum || ' Already  exists!';
+  --  else
+  --  select count(*) into noc from "ediasn.db::ediasndetails.delivery" where "deliverynum" = im_deliverynum;
+  --  if :noc >0 then
+  --  ex_error := 'ERROR: Delivery' || :im_deliverynum || ' Already  exists!';
+  --  else
+  --  select count(*) into noc from "ediasn.db::ediasndetails.item" where "lineitmnum" = im_lineitmnum;
+  --  if :noc >0 then
+  --  ex_error := 'ERROR: Item' || :im_lineitmnum || ' Already  exists!';
+  --  else 
+  --   insert into "ediasn.db::ediasndetails.shipmemt"  values (im_custnumn,im_shipmentnum);
+  --   insert into "ediasn.db::ediasndetails.delivery"  values (im_deliverynum,im_shipmentnum); 
+  --   insert into "ediasn.db::ediasndetails.item"      values (im_lineitmnum,im_deliverynum); 
+  --end if;
+  --end if;
+  --end if;
+  --end if;
 END

@@ -29,7 +29,6 @@ context ediasndetails {
     entity shipmemt {
         key shipmentnum    : String(10) not null;
             customerid    : String(10);
-            deliverynum   : String(10);
             shipdate      : LocalDate;
             timezone      : String(03);
             shipmenttype  : String(2);
