@@ -1,0 +1,7 @@
+service
+{
+"ediasn.db::ediasndetails.edicustomer" as "cust" navigates ("cust_shp" as "itsshipments");
+"ediasn.db::ediasndetails.shipmemt" as "shp" ;
+association "cust_shp"  principal "cust" ("custnumn") multiplicity "1" dependent "shp"("customerid") multiplicity "*"; 
+
+}

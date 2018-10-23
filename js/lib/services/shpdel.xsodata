@@ -1,0 +1,7 @@
+service{
+"ediasn.db::ediasndetails.shipmemt" as "shp" navigates ("shp_del" as "itsdelivery");
+"ediasn.db::ediasndetails.delivery" as "del" ;
+association "shp_del"  principal "shp" ("shipmentnum") multiplicity "1" dependent "del"("shipmentid") multiplicity "*";
+
+
+}

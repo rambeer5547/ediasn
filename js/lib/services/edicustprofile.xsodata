@@ -11,7 +11,8 @@ service{
 
 //navigation 
 "ediasn.db::ediasndetails.edicustomer" as "editp" navigates ("customer_profile" as "hisediprofile") ;
- association "customer_profile" principal "editp" ("custnumn") multiplicity "1" dependent "shp"("customerid") multiplicity "*";  
+"ediasn.db::ediasndetails.envprofile" as "envprof";
+ association "customer_profile" principal "editp" ("custnumn") multiplicity "1" dependent "envprof"("edicustnum") multiplicity "*";  
 
 }
  

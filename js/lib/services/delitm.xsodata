@@ -1,0 +1,7 @@
+service
+{
+"ediasn.db::ediasndetails.delivery" as "del" navigates ("del_itm" as "itsitem");
+"ediasn.db::ediasndetails.item" as "itm" ;
+association "del_itm"  principal "del" ("deliverynum") multiplicity "1" dependent "itm"("deliveryid") multiplicity "*"; 
+
+}
