@@ -20,6 +20,9 @@ modules:
     requires:
       - name: hdi_db
       - name: db
+
+  
+
 resources:
   - name: hdi_db
     properties:
